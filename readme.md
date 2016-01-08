@@ -4,13 +4,17 @@ By Rusil G. Patel
 ## Overview
 This example single page application connects to the TMDB API to search for movies.  The user may search form movies by entering search terms in a form.
 
-The search is performed asynchronously using GET requests to the TMDB API
+The search is performed asynchronously using GET requests to the [TMDB API](https://www.themoviedb.org/?language=en)
 
 ##Implementation
 
 ###View/Frameworks
-####ReactJS
-We will use Facebook's ReactJS framework to render the content in the application.  We also use React CSS Transitions to add some simple animations when content is loading or changing
+####ReactJS View Framework
+We will use Facebook's ReactJS framework to render the content in the application.  We also use React CSS Transitions to add some simple animations when content is loading or changing. [https://facebook.github.io/react/index.html](https://facebook.github.io/react/index.html)
+
+####Javascript Libraries
+ - JQuery - HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.  [https://jquery.com/](https://jquery.com/)
+ - MomentJS - Date/time utility. [http://momentjs.com/](http://momentjs.com/)
 
 ####Bootstrap
 We use Bootstrap for nicely formatted HTML markup
@@ -23,7 +27,7 @@ On a full browser, we show movie posters in a grid format at 150px wide, but on 
 On hover over a movie poster, we show the movie stats (release date and rating)
 
 #Build Tools
-We use *webpack* to process and consolidate all the JS code into a single *bundle.js* for use in the client index.html page.
+We use [*webpack*](https://webpack.github.io/) to process and consolidate all the JS code into a single *bundle.js* for use in the client index.html page.
 
 **NOTE:** Because this is a sample application that we want to review, I did not minify the javascript or perform production-level optimization to reduce the size.  We can use webpack to optimize the bundle if necessary.
 
