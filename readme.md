@@ -31,7 +31,7 @@ We use *webpack* to process and consolidate all the JS code into a single *bundl
 ##Method 1 - QuickStart
 To run the application you can simply open the **index.html** file in a browser.  This file is located at the root level.  All the assets needed for the client app are already built/packaged in the 'build' folder.
 
-##Method 2 - Webback Dev Server
+##Method 2 - Webpack Dev Server
 If you want to build the application and run it using a server, you will to use node and npm to build and run the app.
 
 ###Install Modules/Dependencies
