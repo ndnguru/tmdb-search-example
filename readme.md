@@ -50,6 +50,19 @@ webpack-dev-server
 Then open your browswer and load the URL: [http://localhost:8080](http://localhost:8080) or [http://localhost:8080/webpack-dev-server/](http://localhost:8080/webpack-dev-server/) to see the webpack banner showing the status of the dev build.  The Webpack Dev Server is configured to use Hot Module Replacement.  This allows you to update code and the browswer will update automatically.  This is intended to be used in a development mode only.
 
 ---
+##Todo / Enhancements
+Below are a list of Todos and enhancements we could make to the application
+
+ - Implement a more sophisticated application data store that can accomodate recent **search caching**
+ - Use a Flux implementation to ensure **one-way data** flow
+ - Add Support for **pagination** of movie results
+ - UI Enhancements
+   - Add the ability for the user to select the grid layout (single column, 2-col, 3-col, 4-col, or auto)
+   - Update Typography to a more clean/simple font
+ - Social Media Integration: allow user to post to social media outlets like Facebook, Twitter, etc.
+ 
+
 
 ####Contact Me
-For any questions, contact me at [rusil.patel@gmail.com] (mailto:rusil.patel@gmail.com)
+For any qu
+estions, contact me at [rusil.patel@gmail.com] (mailto:rusil.patel@gmail.com)
