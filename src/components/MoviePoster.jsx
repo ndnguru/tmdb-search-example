@@ -11,6 +11,9 @@ export default class MoviePoster extends React.Component {
     }
     render() {
         var movie = this.props.movie;
+
+        // get the release date.  Some entries do not have it so we need to check if it exists first
+        // we use Moment.js utility to format the Date
         var releaseDate = (movie.release_date) && moment(movie.release_date).format('MMM DD, YYYY');
         return (
             

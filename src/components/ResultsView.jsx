@@ -13,32 +13,33 @@ export default class ResultsView extends React.Component {
     }
     render() {
         var searchResults = this.props.searchResults;
-        var movies = searchResults && searchResults.results;
-        if (!movies.length) {
+        var movies = searchResults && searchResults.results; //if we have searchResults then extract the 'results' property which was returned in the JSON response from the API
+        if (!movies.length) {  // there are no results, we display the message to the user.
             return (
                 <div className='col-xs-12'>
                     <div className='lead'>No results found for '{this.props.currentQuery}'</div>
                 </div>
             );
         }
-        searchResults && 
-            console.log('Search Results: ', searchResults);
+        // searchResults && console.log('Search Results: ', searchResults);
+        
+        // We will use React CSS Transitions to add some simple fading effects for loading search results 
         return (
             <div className='grid-container col-xs-12'>
                 <div className='lead'>Search Results For: '{this.props.currentQuery}'</div>
                 <hr/>
                 <ul className='movies columns-auto'>
-                <ReactCSSTransitionGroup transitionName="animation" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-                {
-                    movies.map((movie, index) => {
-                    return (
-                        <li key={movie.id}>
-                            <MoviePoster movie={movie}/>
-                        </li>
-                        )
-                    })
-                }
-                </ReactCSSTransitionGroup>
+                    <ReactCSSTransitionGroup transitionName="animation" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+                    {
+                        movies.map((movie, index) => {
+                        return (
+                            <li key={movie.id}>
+                                <MoviePoster movie={movie}/>
+                            </li>
+                            )
+                        })
+                    }
+                    </ReactCSSTransitionGroup>
                 </ul>
             </div>
         );
