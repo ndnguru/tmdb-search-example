@@ -60,6 +60,7 @@ Below are a list of Todos and enhancements we could make to the application
    - Add the ability for the user to select the grid layout (single column, 2-col, 3-col, 4-col, or auto)
    - Update Typography to a more clean/simple font
  - Social Media Integration: allow user to post to social media outlets like Facebook, Twitter, etc.
+ - Update the build tools to use grunt/gulp to automate asset copying into the build folder
  
 
 
