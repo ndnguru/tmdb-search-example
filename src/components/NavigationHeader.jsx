@@ -1,6 +1,12 @@
 import React from 'react';
- 
-export default class TemplateComponent extends React.Component {
+/**
+ * Simple Bootstrap Navigation Header React Component.
+ * We are using ES2015/ES6 Classes here.
+ * The optional showSearchForm flag will allow us to toggle a search form in the nav bar, which would be useful if we want the user to still be able to search while the normal search form is no visible, due to scrolling down.  
+ *
+ * TODO: implement the logic to trigger a search using the nav Form
+ */
+export default class NavigationHeader extends React.Component {
     constructor(props) {
         super(props);
     }

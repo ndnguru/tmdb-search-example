@@ -3,8 +3,10 @@ import NavigationHeader from './NavigationHeader';
 import SearchView from './SearchView';
 import ResultsView from './ResultsView';
 
-// require('../css/main.css');
-
+/**
+ * This is the Main Application Handler and will contain the logic to conduct searches to TMDB
+ * AppHandler will pass data down to child components as needed.
+ */
 export default class AppHandler extends React.Component {
     constructor(props) {
         super(props);
@@ -12,19 +14,30 @@ export default class AppHandler extends React.Component {
         //hard bind 'this' because we dont get it by default using ES6 Classes in React
         this.submitSearch = this.submitSearch.bind(this);
     }
+    /**
+     * submitSearch is passed down to the SearchView component, which will invoke the function once valie search criteria is supplied.  We will then use JQuery to perfrom an AJAX async GET query to the TMDB API.  I used my own API key here
+     * @param  {[type]} searchTerms [description]
+     * @return {[type]}             [description]
+     */
     submitSearch(searchTerms) {
         console.log('Searching TMDB for: ', searchTerms);
         var recentSearches = this.state.recentSearches || [];
-        recentSearches.unshift(searchTerms);
-        if (recentSearches.length > 5) {
-            recentSearches.pop();
+        if (recentSearches.indexOf(searchTerms) == -1) {
+            recentSearches.unshift(searchTerms);
+            if (recentSearches.length > 5) {
+                recentSearches.pop();
+            }
+            this.setState({
+                recentSearches
+            });
         }
-        this.setState({
-            recentSearches
-        });
-
-        //conduct the search using jquery ajax
-        var url = "https://api.themoviedb.org/3/search/movie?api_key=6c4636bd7b4475e323de0aee55882eb8&query="+searchTerms;
+        
+        
+        // TMDB API KEY
+        var API_KEY = '6c4636bd7b4475e323de0aee55882eb8';
+        
+        //construct the URL for the AJAX async request
+        var url = "https://api.themoviedb.org/3/search/movie?api_key="+API_KEY+"&query="+searchTerms;
             // $("#results").html('<div class="col-xs-12 text-center loader">Loading...</div>');
         var self = this;
         $.ajax({
@@ -37,6 +50,11 @@ export default class AppHandler extends React.Component {
                     searchResults,
                     currentQuery:searchTerms
                 })
+            },
+            error: function(error) {
+                console.log('Error:', error);
+                //basic error handling, pop up an alert window for now.
+                alert('Uh oh! We encountered a problem getting the data! Shucks!');
             }
         });
     }
