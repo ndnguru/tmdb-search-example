@@ -10,9 +10,19 @@ import ResultsView from './ResultsView';
 export default class AppHandler extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {}; // initialize an empty local state
+        this.state = {
+            tmdbAPIKey : '6c4636bd7b4475e323de0aee55882eb8'
+
+        }; // initialize local state
         //hard bind 'this' because we dont get it by default using ES6 Classes in React
         this.submitSearch = this.submitSearch.bind(this);
+        this.fetchPopularMovies = this.fetchPopularMovies.bind(this);
+    }
+    componentDidMount() {
+        var self = this;
+        setTimeout(function() {
+            self.fetchPopularMovies();
+        }, 10)
     }
     /**
      * submitSearch is passed down to the SearchView component, which will invoke the function once valie search criteria is supplied.  We will then use JQuery to perfrom an AJAX async GET query to the TMDB API.  I used my own API key here
@@ -34,7 +44,7 @@ export default class AppHandler extends React.Component {
         
         
         // TMDB API KEY
-        var API_KEY = '6c4636bd7b4475e323de0aee55882eb8';
+        var API_KEY = this.state.tmdbAPIKey;
         
         //construct the URL for the AJAX async request
         var url = "https://api.themoviedb.org/3/search/movie?api_key="+API_KEY+"&query="+searchTerms;
@@ -49,6 +59,29 @@ export default class AppHandler extends React.Component {
                 self.setState({
                     searchResults,
                     currentQuery:searchTerms
+                })
+            },
+            error: function(error) {
+                console.log('Error:', error);
+                //basic error handling, pop up an alert window for now.
+                alert('Uh oh! We encountered a problem getting the data! Shucks!');
+            }
+        });
+    }
+
+    fetchPopularMovies() {
+        var API_KEY = this.state.tmdbAPIKey;
+        var url =  "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key="+API_KEY;
+        var self = this;
+        $.ajax({
+            url: url, 
+            async: true, 
+            type: 'get', 
+            success: function(searchResults){
+                console.log('Received Search Data: ', searchResults);
+                self.setState({
+                    searchResults,
+                    currentQuery:'most popular titles'
                 })
             },
             error: function(error) {
