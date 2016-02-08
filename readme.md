@@ -2,7 +2,7 @@ TMDB Search App
 ===
 By Rusil G. Patel
 ## Overview
-This example single page application connects to the TMDB API to search for movies.  The user may search form movies by entering search terms in a form. View the working site [here:](http://ndnguru.github.io/tmdb-search-example)
+This example single page application connects to the TMDB API to search for movies.  The user may search form movies by entering search terms in a form. View the working site [here](http://ndnguru.github.io/tmdb-search-example).
 
 The search is performed asynchronously using GET requests to the [TMDB API](https://www.themoviedb.org/?language=en)
 
